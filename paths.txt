@@ -1,0 +1,5 @@
+~/.Xdefaults
+~/.config/i3/config
+~/.config/compton.conf
+~/.vimrc
+~/.zshrc
