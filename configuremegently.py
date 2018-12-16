@@ -9,13 +9,18 @@ from jinja2 import Template
 
 
 def parse_output(proc):
+    lines = ""
     for line in iter(proc.stdout.readline, ''):
         if "nothing to commit, working tree clean" in line:
+            return "clean"
+        if "nothing to commit, working directory clean" in line:
             return "clean"
         if "modified: " in line:
             return "dirty"
         if "Your branch is ahead of" in line:
             return "unpushed"
+        lines += line
+    print "ERROR unknown status: " + lines
     return None
 
 
